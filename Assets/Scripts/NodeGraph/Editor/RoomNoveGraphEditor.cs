@@ -10,6 +10,16 @@ public class RoomNoveGraphEditor : EditorWindow
 {
     private GUIStyle roomNodeStyle;
     private GUIStyle roomNodeSelectedStyle;
+
+    private GUIStyle passageNodeStyle;
+    private GUIStyle passageNodeSelectedStyle;
+
+    private GUIStyle bossRoomNodeStyle;
+    private GUIStyle bossRoomNodeSelectedStyle;
+
+    private GUIStyle entranceRoomNodeSelectedStyle;
+    private GUIStyle entranceRoomNodeStyle;
+
     private static RoomNodeGraphSO currentRoomNodeGraph;
     private RoomNodeSO currentRoomNode = null;
     private RoomNodeTypeListSO roomNodeTypeList;
@@ -55,6 +65,46 @@ public class RoomNoveGraphEditor : EditorWindow
         roomNodeSelectedStyle.normal.textColor = Color.white;
         roomNodeSelectedStyle.padding = new RectOffset(nodePadding, nodePadding, nodePadding, nodePadding);
         roomNodeSelectedStyle.border = new RectOffset(nodeBorder, nodeBorder, nodeBorder, nodeBorder);
+
+        //経路のスタイル
+        passageNodeStyle = new GUIStyle();
+        passageNodeStyle.normal.background = EditorGUIUtility.Load("node2") as Texture2D;
+        passageNodeStyle.normal.textColor = Color.white;
+        passageNodeStyle.padding = new RectOffset(nodePadding, nodePadding, nodePadding, nodePadding);
+        passageNodeStyle.border = new RectOffset(nodeBorder, nodeBorder, nodeBorder, nodeBorder);
+        //選択した状態
+        passageNodeSelectedStyle = new GUIStyle();
+        passageNodeSelectedStyle.normal.background = EditorGUIUtility.Load("node2 on") as Texture2D;
+        passageNodeSelectedStyle.normal.textColor = Color.white;
+        passageNodeSelectedStyle.padding = new RectOffset(nodePadding, nodePadding, nodePadding, nodePadding);
+        passageNodeSelectedStyle.border = new RectOffset(nodeBorder, nodeBorder, nodeBorder, nodeBorder);
+
+        //ボスの部屋のスタイル
+        bossRoomNodeStyle = new GUIStyle();
+        bossRoomNodeStyle.normal.background = EditorGUIUtility.Load("node6") as Texture2D;
+        bossRoomNodeStyle.normal.textColor = Color.white;
+        bossRoomNodeStyle.padding = new RectOffset(nodePadding, nodePadding, nodePadding, nodePadding);
+        bossRoomNodeStyle.border = new RectOffset(nodeBorder, nodeBorder, nodeBorder, nodeBorder);
+        //選択した状態
+        bossRoomNodeSelectedStyle = new GUIStyle();
+        bossRoomNodeSelectedStyle.normal.background = EditorGUIUtility.Load("node6 on") as Texture2D;
+        bossRoomNodeSelectedStyle.normal.textColor = Color.white;
+        bossRoomNodeSelectedStyle.padding = new RectOffset(nodePadding, nodePadding, nodePadding, nodePadding);
+        bossRoomNodeSelectedStyle.border = new RectOffset(nodeBorder, nodeBorder, nodeBorder, nodeBorder);
+
+        //アイテムの部屋のスタイル
+        entranceRoomNodeStyle = new GUIStyle();
+        entranceRoomNodeStyle.normal.background = EditorGUIUtility.Load("node3") as Texture2D;
+        entranceRoomNodeStyle.normal.textColor = Color.white;
+        entranceRoomNodeStyle.padding = new RectOffset(nodePadding, nodePadding, nodePadding, nodePadding);
+        entranceRoomNodeStyle.border = new RectOffset(nodeBorder, nodeBorder, nodeBorder, nodeBorder);
+        //選択した状態
+        entranceRoomNodeSelectedStyle = new GUIStyle();
+        entranceRoomNodeSelectedStyle.normal.background = EditorGUIUtility.Load("node3 on") as Texture2D;
+        entranceRoomNodeSelectedStyle.normal.textColor = Color.white;
+        entranceRoomNodeSelectedStyle.padding = new RectOffset(nodePadding, nodePadding, nodePadding, nodePadding);
+        entranceRoomNodeSelectedStyle.border = new RectOffset(nodeBorder, nodeBorder, nodeBorder, nodeBorder);
+
 
         //部屋のタイプをロードする
         roomNodeTypeList = GameResources.Instance.roomNodeTypeList;
@@ -490,11 +540,24 @@ public class RoomNoveGraphEditor : EditorWindow
         {
             if (roomNode.isSelected)
             {
-                roomNode.Draw(roomNodeSelectedStyle);
+                if (roomNode.roomNodeType.isCorridor)
+                    roomNode.Draw(passageNodeSelectedStyle);
+                else if(roomNode.roomNodeType.isBossRoom)
+                    roomNode.Draw(bossRoomNodeSelectedStyle);
+                else if(roomNode.roomNodeType.isEntrance)
+                    roomNode.Draw(entranceRoomNodeSelectedStyle);
+                else roomNode.Draw(roomNodeSelectedStyle);
+                
             }
             else
             {
-                roomNode.Draw(roomNodeStyle);
+                if (roomNode.roomNodeType.isCorridor)
+                    roomNode.Draw(passageNodeStyle);
+                else if (roomNode.roomNodeType.isBossRoom)
+                    roomNode.Draw(bossRoomNodeStyle);
+                else if (roomNode.roomNodeType.isEntrance)
+                    roomNode.Draw(entranceRoomNodeStyle);
+                else roomNode.Draw(roomNodeStyle);
             }
         }
 
