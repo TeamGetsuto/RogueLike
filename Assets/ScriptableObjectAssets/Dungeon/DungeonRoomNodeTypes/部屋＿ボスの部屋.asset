@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 902eba4f8ce19da449d5cf723c4d3b2c, type: 3}
-  m_Name: "\u90E8\u5C4B\uFF3F\u30C1\u30A7\u30B9\u30C8\u5BA4"
+  m_Name: "\u90E8\u5C4B\uFF3F\u30DC\u30B9\u306E\u90E8\u5C4B"
   m_EditorClassIdentifier: 
-  roomNodeTypeName: "\u30C1\u30A7\u30B9\u30C8\u5BA4"
+  roomNodeTypeName: "\u30DC\u30B9\u306E\u90E8\u5C4B"
   displayInNodeGraphEditor: 1
   isCorridor: 0
   isCorridorNS: 0
   isCorridorEW: 0
   isEntrance: 0
-  isBossRoom: 0
+  isBossRoom: 1
   isNone: 0
