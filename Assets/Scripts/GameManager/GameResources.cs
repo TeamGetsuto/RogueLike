@@ -29,4 +29,14 @@ public class GameResources : MonoBehaviour
 
     public RoomNodeTypeListSO roomNodeTypeList;
 
+
+    /// <summary>
+    /// 以下、白築追記
+    /// </summary>
+    #region BehaviorTree
+    [Tooltip("Behaviortree用に追記")]
+    #endregion
+
+    public NodeTypeList nodeTypeList;
+
 }
