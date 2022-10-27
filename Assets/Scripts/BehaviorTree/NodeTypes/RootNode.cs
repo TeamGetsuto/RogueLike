@@ -4,18 +4,20 @@ using UnityEngine;
 
 public class RootNode : Node
 {
+    public Node child;
+
     protected override void OnStart()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     protected override void OnStop()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     protected override State OnUpDate()
     {
-        throw new System.NotImplementedException();
+        return child.UpDate();
     }
 }

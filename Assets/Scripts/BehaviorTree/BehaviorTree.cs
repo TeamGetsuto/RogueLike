@@ -21,6 +21,7 @@ public class BehaviorTree : ScriptableObject
         return treeState;
     }
 
+    //ノードの追加
     public Node CreateNode(System.Type type)
     {
         Node node = ScriptableObject.CreateInstance(type) as Node;
@@ -34,10 +35,27 @@ public class BehaviorTree : ScriptableObject
         return node;
     }
 
+    //ノードの削除
     public void DeleatNode(Node node)
     {
         nodes.Remove(node);
         AssetDatabase.RemoveObjectFromAsset(node);
         AssetDatabase.SaveAssets();
     }
+
+    public void AddChild(Node parent, Node child)
+    {
+
+    }
+
+    public void RemoveChild(Node parent, Node child)
+    {
+
+    }
+
+    //public List<Node> GetChildren(Node parent)
+    {
+
+    }
+
 }
