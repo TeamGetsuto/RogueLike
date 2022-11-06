@@ -1,0 +1,3 @@
+Pixels per unit - 16
+Filter mode - Point(no filter)
+Compression - None
