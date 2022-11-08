@@ -15,9 +15,9 @@ MonoBehaviour:
   state: 1
   isStart: 0
   guid: 57febe99af3f5ac48a0b0deb2030b1c7
-  pos: {x: -196, y: 119}
+  pos: {x: 101.99999, y: -406.30276}
   child: {fileID: -5459804386119156621}
---- !u!114 &-6411382941304970449
+--- !u!114 &-8704871786592194335
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -26,14 +26,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0f3a50b982439843803b100c95f1a58, type: 3}
-  m_Name: WaitNode
+  m_Script: {fileID: 11500000, guid: 21fdfc182a55bf74d88537b29b640923, type: 3}
+  m_Name: Debugger
   m_EditorClassIdentifier: 
   state: 1
   isStart: 0
-  guid: a97ee5cb833681a4bad95910e88f0c04
-  pos: {x: 460, y: 101}
-  waitTime: 1
+  guid: 6c4e561c9555b2049b20ef6ba34711f2
+  pos: {x: 184.99998, y: 41.000015}
+  message: 456
 --- !u!114 &-5459804386119156621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49,9 +49,9 @@ MonoBehaviour:
   state: 1
   isStart: 0
   guid: c45f5daf5116f6f4687909706a931991
-  pos: {x: -40, y: 18.5}
+  pos: {x: 101.99999, y: -266.935}
   child: {fileID: -905548942104543693}
---- !u!114 &-3939776306388808330
+--- !u!114 &-4598707302011519760
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -65,9 +65,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 1
   isStart: 0
-  guid: c19db0ae7f638814e8f15a4a4347716c
-  pos: {x: 460, y: 389}
+  guid: 1713c8930ff6c5744bf9e2e3ab57f8ed
+  pos: {x: -26.52687, y: 40.999985}
   waitTime: 1
+--- !u!114 &-2930606581072502508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21fdfc182a55bf74d88537b29b640923, type: 3}
+  m_Name: Debugger
+  m_EditorClassIdentifier: 
+  state: 1
+  isStart: 0
+  guid: 95d0ca01e06044d46a73a6b917b659b4
+  pos: {x: -253.85503, y: 32.999996}
+  message: 123
 --- !u!114 &-905548942104543693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,29 +100,12 @@ MonoBehaviour:
   state: 1
   isStart: 0
   guid: feb8865159f720c4aafcbd2810c39dfd
-  pos: {x: 94, y: 119}
+  pos: {x: 95.91647, y: -117.54272}
   children:
-  - {fileID: -6411382941304970449}
-  - {fileID: 6543655521279866347}
-  - {fileID: -316837230648762388}
-  - {fileID: -3939776306388808330}
---- !u!114 &-316837230648762388
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21fdfc182a55bf74d88537b29b640923, type: 3}
-  m_Name: Debugger
-  m_EditorClassIdentifier: 
-  state: 1
-  isStart: 0
-  guid: c7cc0639e1eefc946b601b94c52c815d
-  pos: {x: 357, y: -20}
-  message: one
+  - {fileID: -2930606581072502508}
+  - {fileID: -4598707302011519760}
+  - {fileID: -8704871786592194335}
+  - {fileID: 6478222431626924881}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,13 +122,13 @@ MonoBehaviour:
   treeState: 1
   nodes:
   - {fileID: -905548942104543693}
-  - {fileID: -6411382941304970449}
-  - {fileID: 6543655521279866347}
   - {fileID: -9026312063604769529}
-  - {fileID: -316837230648762388}
-  - {fileID: -3939776306388808330}
   - {fileID: -5459804386119156621}
---- !u!114 &6543655521279866347
+  - {fileID: -2930606581072502508}
+  - {fileID: -4598707302011519760}
+  - {fileID: -8704871786592194335}
+  - {fileID: 6478222431626924881}
+--- !u!114 &6478222431626924881
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -137,11 +137,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21fdfc182a55bf74d88537b29b640923, type: 3}
-  m_Name: Debugger
+  m_Script: {fileID: 11500000, guid: a0f3a50b982439843803b100c95f1a58, type: 3}
+  m_Name: WaitNode
   m_EditorClassIdentifier: 
   state: 1
   isStart: 0
-  guid: 2039ca1af7e575b49b75c4c1b9143b26
-  pos: {x: 357, y: 234}
-  message: two
+  guid: 366e3def58c978a4eb82512a70a52c5f
+  pos: {x: 425.18683, y: 40.99997}
+  waitTime: 1
