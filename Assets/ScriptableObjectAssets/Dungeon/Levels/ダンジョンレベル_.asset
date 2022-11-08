@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff7e24bc547d6ee439f8c2143f3854a0, type: 3}
   m_Name: "\u30C0\u30F3\u30B8\u30E7\u30F3\u30EC\u30D9\u30EB_"
   m_EditorClassIdentifier: 
-  levelName: 
+  levelName: "\u30C6\u30B9\u30C8"
   roomTemplateList: []
   roomNodeGraphList: []
