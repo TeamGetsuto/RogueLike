@@ -58,6 +58,12 @@ public class GameManager : SingletoneMonobehaviour<GameManager>
 
     private void PlayDungeonLevel(int dungeonLevelListIndex)
     {
+        bool dungeonBuiltSuccessfully = DungeonBuilder.Instance.GenerateDungeon(dungeonLevelList[dungeonLevelListIndex]);
+
+        if (!dungeonBuiltSuccessfully)
+        {
+            Debug.LogError("ƒ_ƒ“ƒWƒ‡ƒ“¶¬‚ª¸”s‚µ‚Ü‚µ‚½");
+        }
 
     }
 

@@ -14,11 +14,11 @@ public class Doorway
     #region Header
     [Header("•”‰®‚ÌL‚³")]
     #endregion
-    public Vector2Int doorwayCopyTileWidth;
+    public int doorwayCopyTileWidth;
     #region Header
     [Header("•”‰®‚Ì‚‚³")]
     #endregion
-    public Vector2Int doorwayCopyTileHeight;
+    public int doorwayCopyTileHeight;
 
     [HideInInspector]
     public bool isConnected = false;
