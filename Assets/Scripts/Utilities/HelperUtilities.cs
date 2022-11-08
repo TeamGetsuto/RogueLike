@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public static class HelperUtilities
@@ -24,6 +25,12 @@ public static class HelperUtilities
     {
         bool error = false;
         int count = 0;
+
+        if (enumerableObjectToCheck == null)
+        {
+            Debug.Log(thisObject.name.ToString() + "ÇÃ" + fieldName + "ÇÕê›íËÇ≥ÇÍÇƒÇ¢Ç‹ÇπÇÒ");
+            return true;
+        }
 
         foreach(var item in enumerableObjectToCheck)
         {
