@@ -17,10 +17,10 @@ public abstract class Node : ScriptableObject
         Failure
     }
 
-    public State state = State.Running;
-    public bool isStart = false;
-    public string guid;
-    public Vector2 pos;
+    [HideInInspector] public State state = State.Running;
+    [HideInInspector] public bool isStart = false;
+    [HideInInspector] public string guid;
+    [HideInInspector] public Vector2 pos;
 
     //Start - UpDate - Stop ‚Ì‡‚Åˆ—‚ğ‰ñ‚·
     public State UpDate()
@@ -43,6 +43,11 @@ public abstract class Node : ScriptableObject
         }
 
         return state;
+    }
+
+    public virtual Node Clone()
+    {
+        return Instantiate(this);
     }
 
     protected abstract void OnStart();
