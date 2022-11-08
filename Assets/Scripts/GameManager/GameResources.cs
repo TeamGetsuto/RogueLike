@@ -29,4 +29,14 @@ public class GameResources : MonoBehaviour
 
     public RoomNodeTypeListSO roomNodeTypeList;
 
+    #region Header Materials
+    [Space(10)]
+    [Header("MATERIALS")]
+    #endregion
+    #region ツールチップ
+    [Tooltip("Dimmed Material")]
+    #endregion
+
+    public Material dimmedMaterial;
+
 }
