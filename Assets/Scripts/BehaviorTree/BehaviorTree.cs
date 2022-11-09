@@ -11,6 +11,8 @@ public class BehaviorTree : ScriptableObject
 
     public List<Node> nodes = new List<Node>();
 
+    public BlackBoard blackboard = new BlackBoard();
+
     public Node.State UpDate()
     {
         if (root.state == Node.State.Running)
@@ -21,6 +23,7 @@ public class BehaviorTree : ScriptableObject
         return treeState;
     }
 
+    #region EDITOR
 #if UNITY_EDITOR
     //ÉmÅ[ÉhÇÃí«â¡
     public Node CreateNode(System.Type type)
@@ -33,7 +36,11 @@ public class BehaviorTree : ScriptableObject
 
         nodes.Add(node);
 
-        AssetDatabase.AddObjectToAsset(node, this);
+        if (!Application.isPlaying)
+        {
+            AssetDatabase.AddObjectToAsset(node, this);
+        }
+
         Undo.RegisterCreatedObjectUndo(node, "Behavior Tree (CreateNode)");
 
         AssetDatabase.SaveAssets();
@@ -132,7 +139,8 @@ public class BehaviorTree : ScriptableObject
 
         return children;
     }
-#endif
+#endif 
+    #endregion EDITOR
 
     public void Traverse(Node node, System.Action<Node> visiter)
     {
@@ -155,5 +163,14 @@ public class BehaviorTree : ScriptableObject
             tree.nodes.Add(n);
         });
         return tree;
+    }
+
+    public void Bind(AiAgent agent)
+    {
+        Traverse(root, node =>
+        {
+            node.agent = agent;
+            node.blackboard = blackboard;
+        });
     }
 }

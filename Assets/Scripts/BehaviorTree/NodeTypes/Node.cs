@@ -21,6 +21,9 @@ public abstract class Node : ScriptableObject
     [HideInInspector] public bool isStart = false;
     [HideInInspector] public string guid;
     [HideInInspector] public Vector2 pos;
+    [HideInInspector] public BlackBoard blackboard;
+    [HideInInspector] public AiAgent agent;
+    [TextArea] public string description;
 
     //Start - UpDate - Stop ‚Ì‡‚Åˆ—‚ğ‰ñ‚·
     public State UpDate()

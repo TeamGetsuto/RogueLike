@@ -9,6 +9,7 @@ public class BehaviorRunner : MonoBehaviour
     void Start()
     {
        tree = tree.Clone();
+        tree.Bind(GetComponent<AiAgent>());
     }
 
     // Update is called once per frame

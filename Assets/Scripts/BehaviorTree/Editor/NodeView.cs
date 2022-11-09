@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine.UIElements;
+using UnityEditor.UIElements;
 using UnityEditor;
 
 public class NodeView : UnityEditor.Experimental.GraphView.Node
@@ -25,6 +26,10 @@ public class NodeView : UnityEditor.Experimental.GraphView.Node
         CreateInputPorts();
         CreateOutputPorts();
         SetupClasses();
+
+        Label descriptionLabel = this.Q<Label>("description");
+        descriptionLabel.bindingPath = "description";
+        descriptionLabel.Bind(new SerializedObject(node));
     }
 
     private void SetupClasses()
@@ -120,4 +125,45 @@ public class NodeView : UnityEditor.Experimental.GraphView.Node
             OnNodeSelected.Invoke(this);
         }
     }
+
+    public void SortChildren()
+    {
+        CompositeNode composite = node as CompositeNode;
+        if(composite)
+        {
+            composite.children.Sort(SortByHorizontalPosition);
+        }
+    }
+
+    public void UpdateState()
+    {
+        RemoveFromClassList("success");
+        RemoveFromClassList("running");
+        RemoveFromClassList("failure");
+
+        if (Application.isPlaying)
+        {
+            switch (node.state)
+            {
+                case Node.State.Success:
+                    AddToClassList("success");
+                    break;
+                case Node.State.Running:
+                    if (node.isStart)
+                    {
+                        AddToClassList("running");
+                    }
+                    break;
+                case Node.State.Failure:
+                    AddToClassList("failure");
+                    break;
+            }
+        }
+    }
+
+    private int SortByHorizontalPosition(Node left, Node right)
+    {
+        return left.pos.x < right.pos.x ? -1 : 1;
+    }
+    
 }
