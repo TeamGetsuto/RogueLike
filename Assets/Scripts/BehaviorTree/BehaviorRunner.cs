@@ -5,16 +5,27 @@ using UnityEngine;
 public class BehaviorRunner : MonoBehaviour
 {
     public BehaviorTree tree;
+
+    Context context;
     // Start is called before the first frame update
     void Start()
     {
-       tree = tree.Clone();
-        tree.Bind(GetComponent<AiAgent>());
+        context = CreateBTContext();
+        tree = tree.Clone();
+        tree.Bind(context);
     }
 
     // Update is called once per frame
     void Update()
     {
-        tree.UpDate();
+        if (tree)
+        {
+            tree.UpDate();
+        }
+    }
+
+    Context CreateBTContext()
+    {
+        return Context.CreateFromGameObject(gameObject);
     }
 }

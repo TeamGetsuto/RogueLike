@@ -22,7 +22,7 @@ public abstract class Node : ScriptableObject
     [HideInInspector] public string guid;
     [HideInInspector] public Vector2 pos;
     [HideInInspector] public BlackBoard blackboard;
-    [HideInInspector] public AiAgent agent;
+    [HideInInspector] public Context context;
     [TextArea] public string description;
 
     //Start - UpDate - Stop ‚Ì‡‚Åˆ—‚ğ‰ñ‚·
