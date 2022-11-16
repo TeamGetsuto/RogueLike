@@ -19,12 +19,12 @@ public class GameResources : MonoBehaviour
     }
 
 
-    #region Header ƒ_ƒ“ƒWƒ‡ƒ“
+    #region Header ãƒ€ãƒ³ã‚¸ãƒ§ãƒ³
     [Space(10)]
-    [Header("ƒ_ƒ“ƒWƒ‡ƒ“")]
+    [Header("ãƒ€ãƒ³ã‚¸ãƒ§ãƒ³")]
     #endregion
-    #region ƒc[ƒ‹ƒ`ƒbƒv
-    [Tooltip("RoomNodeTypeListSO‚ğg‚Á‚Ä‚­‚¾‚³‚¢")]
+    #region ãƒ„ãƒ¼ãƒ«ãƒãƒƒãƒ—
+    [Tooltip("RoomNodeTypeListSOã‚’ä½¿ã£ã¦ãã ã•ã„")]
     #endregion
 
     public RoomNodeTypeListSO roomNodeTypeList;
@@ -33,7 +33,7 @@ public class GameResources : MonoBehaviour
     [Space(10)]
     [Header("MATERIALS")]
     #endregion
-    #region ƒc[ƒ‹ƒ`ƒbƒv
+    #region ãƒ„ãƒ¼ãƒ«ãƒãƒƒãƒ—
     [Tooltip("Dimmed Material")]
     #endregion
 

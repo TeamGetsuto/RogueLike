@@ -1,0 +1,31 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[System.Serializable]
+public class RandomPosition : ActionNode
+{
+    public Vector2 min = Vector2.one * -5;
+    public Vector2 max = Vector2.one * 5;
+
+    protected override void OnStart()
+    {
+        
+    }
+
+    protected override void OnStop()
+    {
+        
+    }
+
+    protected override State OnUpDate()
+    {
+        Vector3 pos = new Vector3();
+        pos.x = Random.Range(min.x, max.x);
+        pos.y = Random.Range(min.y, max.y);
+
+        blackboard.moveToPosition = pos;
+
+        return State.Success;
+    }
+}
