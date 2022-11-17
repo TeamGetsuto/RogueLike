@@ -19,6 +19,8 @@ MonoBehaviour:
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     moveToObject: {fileID: 0}
+    moveDirection: {x: 0, y: 0}
+    condition: 0
   description: this is a rootnode
   child: {fileID: -5459804386119156621}
 --- !u!114 &-8704871786592194335
@@ -40,6 +42,8 @@ MonoBehaviour:
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     moveToObject: {fileID: 0}
+    moveDirection: {x: 0, y: 0}
+    condition: 0
   description: 
   message: 456
 --- !u!114 &-5459804386119156621
@@ -61,6 +65,8 @@ MonoBehaviour:
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     moveToObject: {fileID: 0}
+    moveDirection: {x: 0, y: 0}
+    condition: 0
   description: 
   child: {fileID: -905548942104543693}
 --- !u!114 &-4598707302011519760
@@ -82,6 +88,8 @@ MonoBehaviour:
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     moveToObject: {fileID: 0}
+    moveDirection: {x: 0, y: 0}
+    condition: 0
   description: 
   waitTime: 1
 --- !u!114 &-2930606581072502508
@@ -99,10 +107,12 @@ MonoBehaviour:
   state: 0
   isStart: 0
   guid: 95d0ca01e06044d46a73a6b917b659b4
-  pos: {x: -216.30005, y: 36.554}
+  pos: {x: -212.56248, y: 55.99998}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     moveToObject: {fileID: 0}
+    moveDirection: {x: 0, y: 0}
+    condition: 0
   description: 
   message: 123
 --- !u!114 &-905548942104543693
@@ -124,6 +134,8 @@ MonoBehaviour:
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     moveToObject: {fileID: 0}
+    moveDirection: {x: 0, y: 0}
+    condition: 0
   description: 
   children:
   - {fileID: -2930606581072502508}
@@ -155,6 +167,8 @@ MonoBehaviour:
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     moveToObject: {fileID: 0}
+    moveDirection: {x: 0, y: 0}
+    condition: 0
 --- !u!114 &6478222431626924881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,9 +184,11 @@ MonoBehaviour:
   state: 1
   isStart: 0
   guid: 366e3def58c978a4eb82512a70a52c5f
-  pos: {x: 425, y: 136}
+  pos: {x: 387.9583, y: 104.000046}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     moveToObject: {fileID: 0}
+    moveDirection: {x: 0, y: 0}
+    condition: 0
   description: 
   waitTime: 1

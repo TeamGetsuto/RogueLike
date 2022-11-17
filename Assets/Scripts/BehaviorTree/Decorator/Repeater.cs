@@ -7,24 +7,22 @@ using UnityEngine;
 /// ノードのループ処理
 /// </summary>
 /// 
-namespace shirasu
+
+public class Repeater : DecorateNode
 {
-    public class Repeater : DecorateNode
+    protected override void OnStart()
     {
-        protected override void OnStart()
-        {
 
-        }
+    }
 
-        protected override void OnStop()
-        {
+    protected override void OnStop()
+    {
 
-        }
+    }
 
-        protected override State OnUpDate()
-        {
-            child.UpDate();
-            return State.Running;
-        }
+    protected override State OnUpDate()
+    {
+        child.UpDate();
+        return State.Running;
     }
 }
