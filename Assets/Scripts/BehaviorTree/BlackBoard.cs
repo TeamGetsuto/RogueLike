@@ -7,4 +7,7 @@ public class BlackBoard
 {
     public Vector3 moveToPosition;
     public GameObject moveToObject;
+
+    public bool keyCodeWdown;
+    public bool keyCodeSdown;
 }
