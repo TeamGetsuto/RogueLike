@@ -18,6 +18,7 @@ public class Context
     public NavMeshAgent agent;
     public Animator animator;
     public CharacterController characterController;
+    public GameObject player;
 
     //‚»‚Ì‘¼Žg‚¢‚½‚¢‚à‚Ì‚ð“K‹X’Ç‰Á‚µ‚Ä‚­‚¾‚³‚¢
 
@@ -36,6 +37,7 @@ public class Context
             context.agent = obj.GetComponent<NavMeshAgent>();
             context.animator = obj.GetComponent<Animator>();
             context.characterController = obj.GetComponent<CharacterController>();
+            context.player = GameObject.Find("Player");
 
             //‚»‚Ì‘¼Žg‚¢‚½‚¢‚à‚Ì‚ð“K‹X’Ç‰Á‚µ‚Ä‚­‚¾‚³‚¢
         }
