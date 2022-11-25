@@ -10,6 +10,8 @@ public class BehaviorTreeEditor : EditorWindow
     InspectorView inspectorView;
     IMGUIContainer blackboardView;
 
+    SerializedBehaviorTree serializedTree;
+
     SerializedObject treeObject;
     SerializedProperty blackboardProperty;
 

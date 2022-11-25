@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
@@ -47,12 +48,12 @@ public class BehaviorTreeView : GraphView
         DeleteElements(graphElements);
         graphViewChanged += OnGraphViewChanged;
 
-        if(tree.root == null)
-        {
-            tree.root = tree.CreateNode(typeof(RootNode)) as RootNode;
-            EditorUtility.SetDirty(tree);
-            AssetDatabase.SaveAssets();
-        }
+        //if(tree.root == null)
+        //{
+        //    tree.root = tree.CreateNode(typeof(RootNode)) as RootNode;
+        //    EditorUtility.SetDirty(tree);
+        //    AssetDatabase.SaveAssets();
+        //}
 
         //Create node view
         tree.nodes.ForEach(n => CreateNodeView(n));
@@ -132,12 +133,14 @@ public class BehaviorTreeView : GraphView
     public override void BuildContextualMenu(ContextualMenuPopulateEvent evt)
     {
         //base.BuildContextualMenu(evt);
+
+        Vector2 nodePosition = this.ChangeCoordinatesTo(contentViewContainer, evt.localMousePosition);
         {
             var types = TypeCache.GetTypesDerivedFrom<ActionNode>();
 
             foreach(var type in types)
             {
-                evt.menu.AppendAction($"[{type.BaseType.Name}] {type.Name}", (a) => CreateNode(type));
+                evt.menu.AppendAction($"[Action]/{type.Name}", (a) => CreateNode(type, nodePosition));
             }
         }
 
@@ -146,7 +149,7 @@ public class BehaviorTreeView : GraphView
 
             foreach (var type in types)
             {
-                evt.menu.AppendAction($"[{type.BaseType.Name}] {type.Name}", (a) => CreateNode(type));
+                evt.menu.AppendAction($"[Composite]/{type.Name}", (a) => CreateNode(type, nodePosition));
             }
         }
 
@@ -155,16 +158,16 @@ public class BehaviorTreeView : GraphView
 
             foreach (var type in types)
             {
-                evt.menu.AppendAction($"[{type.BaseType.Name}] {type.Name}", (a) => CreateNode(type));
+                evt.menu.AppendAction($"[Decorator]/{type.Name}", (a) => CreateNode(type, nodePosition));
             }
         }
 
 
     }
 
-    void CreateNode(System.Type type)
+    void CreateNode(System.Type type, Vector2 pos)
     {
-        Node node = tree.CreateNode(type);
+        Node node = tree.CreateNode(type, pos);
         CreateNodeView(node);
     }
 
