@@ -48,12 +48,12 @@ public class BehaviorTreeView : GraphView
         DeleteElements(graphElements);
         graphViewChanged += OnGraphViewChanged;
 
-        //if(tree.root == null)
-        //{
-        //    tree.root = tree.CreateNode(typeof(RootNode)) as RootNode;
-        //    EditorUtility.SetDirty(tree);
-        //    AssetDatabase.SaveAssets();
-        //}
+        if (tree.root == null)
+        {
+            tree.root = tree.CreateNode(typeof(RootNode), Vector2.zero) as RootNode;
+            EditorUtility.SetDirty(tree);
+            AssetDatabase.SaveAssets();
+        }
 
         //Create node view
         tree.nodes.ForEach(n => CreateNodeView(n));

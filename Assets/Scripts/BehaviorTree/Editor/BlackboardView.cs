@@ -5,23 +5,23 @@ using UnityEditor.UIElements;
 
 namespace shirasu
 {
-    public class BlackboardView : VisualElement
-    {
-        public new class UxmlFactory : UxmlFactory<BlackboardView, VisualElement.UxmlTraits> { }
+    //public class BlackboardView : VisualElement
+    //{
+    //    public new class UxmlFactory : UxmlFactory<BlackboardView, VisualElement.UxmlTraits> { }
 
-        public BlackboardView() { }
+    //    public BlackboardView() { }
 
-        internal void Bind(SerializedBehaviorTree serilizer)
-        {
-            Clear();
+    //    internal void Bind(SerializedBehaviorTree serilizer)
+    //    {
+    //        Clear();
 
-            var blackboardProperty = serilizer.Blackboard;
+    //        var blackboardProperty = serilizer.Blackboard;
 
-            blackboardProperty.isExpanded = true;
+    //        blackboardProperty.isExpanded = true;
 
-            PropertyField field = new PropertyField();
-            field.BindProperty(blackboardProperty);
-            Add(field);
-        }
-    }
+    //        PropertyField field = new PropertyField();
+    //        field.BindProperty(blackboardProperty);
+    //        Add(field);
+    //    }
+    //}
 }

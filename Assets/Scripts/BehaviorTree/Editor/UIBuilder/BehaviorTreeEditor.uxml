@@ -7,11 +7,11 @@
         <ui:VisualElement name="LeftPanel" style="width: 250px;">
             <SplitView orientation="Vertical" fixed-pane-initial-dimension="200">
                 <ui:VisualElement name="inspector-container">
-                    <InspectorView />
                     <ui:Label text="Inspector" display-tooltip-when-elided="true" style="background-color: rgb(37, 37, 37);" />
+                    <InspectorView />
                 </ui:VisualElement>
                 <ui:VisualElement name="blackboard-container" style="width: 300px;">
-                    <ui:Label text="Blackboard" display-tooltip-when-elided="true" style="background-color: rgba(37, 37, 37, 255);" />
+                    <ui:Label text="Blackboard" display-tooltip-when-elided="true" style="background-color: rgb(37, 37, 37);" />
                     <ui:IMGUIContainer />
                 </ui:VisualElement>
             </SplitView>
