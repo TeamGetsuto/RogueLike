@@ -339,7 +339,7 @@ public class DungeonBuilder : SingletoneMonobehaviour<DungeonBuilder>
 
     private bool IsOverLappingInterval(int imin1, int imax1, int imin2, int imax2)
     {
-        if(Mathf.Max(imin1,imin2) <= Mathf.Max(imax1,imax2))
+        if(Mathf.Max(imin1,imin2) <= Mathf.Min(imax1,imax2))
         {
             return true;
         }
@@ -370,7 +370,10 @@ public class DungeonBuilder : SingletoneMonobehaviour<DungeonBuilder>
         List<RoomTemplateSO> matchingRoomTemplateList = new List<RoomTemplateSO>();
         foreach(RoomTemplateSO roomtemplate in roomTemplateList)
         {
-            matchingRoomTemplateList.Add(roomtemplate);
+            if (roomtemplate.roomNodeType == roomNodeType)
+            {
+                matchingRoomTemplateList.Add(roomtemplate);
+            }
         }
 
         if(matchingRoomTemplateList.Count == 0)
@@ -480,8 +483,9 @@ public class DungeonBuilder : SingletoneMonobehaviour<DungeonBuilder>
                     Destroy(room.instantiatedRoom.gameObject);
                 }
 
-                dungeonBuilderRoomDictionary.Clear();
             }
+
+            dungeonBuilderRoomDictionary.Clear();
         }
     }
 

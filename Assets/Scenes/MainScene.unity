@@ -505,7 +505,7 @@ MonoBehaviour:
     ModeOverride: 1
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.2111802, y: 1}
+    m_SensorSize: {x: 2.0498338, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -733,7 +733,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a03ea5a25127654e963a83186b086a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dungeonLevelList: []
+  dungeonLevelList:
+  - {fileID: 11400000, guid: 9e052d65d3aa5fe44ac50a6f9f9b251f, type: 2}
   currentDungeonLevelListIndex: 0
   gameState: 0
 --- !u!4 &1112178342
