@@ -19,6 +19,9 @@ public class Context
     public Animator animator;
     public CharacterController characterController;
 
+    //Player
+    public GameObject player;
+
     //‚»‚Ì‘¼Žg‚¢‚½‚¢‚à‚Ì‚ð“K‹X’Ç‰Á‚µ‚Ä‚­‚¾‚³‚¢
 
     public static Context CreateFromGameObject(GameObject obj)
@@ -36,6 +39,9 @@ public class Context
             context.agent = obj.GetComponent<NavMeshAgent>();
             context.animator = obj.GetComponent<Animator>();
             context.characterController = obj.GetComponent<CharacterController>();
+
+            //Player
+            context.player = GameObject.FindWithTag("Player");
 
             //‚»‚Ì‘¼Žg‚¢‚½‚¢‚à‚Ì‚ð“K‹X’Ç‰Á‚µ‚Ä‚­‚¾‚³‚¢
         }
