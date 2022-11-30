@@ -26,9 +26,10 @@ public class BehaviorTree : ScriptableObject
     #region EDITOR
 #if UNITY_EDITOR
     //ÉmÅ[ÉhÇÃí«â¡
-    public Node CreateNode(System.Type type)
+    public Node CreateNode(System.Type type, Vector2 pos)
     {
         Node node = ScriptableObject.CreateInstance(type) as Node;
+        node.pos = pos;
         node.name = type.Name;
         node.guid = GUID.Generate().ToString();
 
