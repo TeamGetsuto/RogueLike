@@ -505,7 +505,7 @@ MonoBehaviour:
     ModeOverride: 1
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 6.0406094, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -619,7 +619,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6.15625
+  orthographic size: 33.75
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -698,10 +698,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ComponentVersion: 1
   m_AssetsPPU: 16
-  m_RefResolutionX: 480
-  m_RefResolutionY: 270
+  m_RefResolutionX: 1920
+  m_RefResolutionY: 1080
   m_CropFrame: 0
-  m_GridSnapping: 0
+  m_GridSnapping: 1
   m_UpscaleRT: 0
   m_PixelSnapping: 0
   m_CropFrameX: 0
@@ -740,6 +740,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9e052d65d3aa5fe44ac50a6f9f9b251f, type: 2}
   currentDungeonLevelListIndex: 0
   gameState: 0
+  player: {fileID: 411173025652142245, guid: 4d69f414ebba4744ca6ff83461365a55, type: 3}
+  group: {fileID: 67535764}
 --- !u!4 &1112178342
 Transform:
   m_ObjectHideFlags: 0

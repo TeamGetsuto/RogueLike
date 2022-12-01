@@ -115,6 +115,8 @@ public class BehaviorTree : ScriptableObject
             EditorUtility.SetDirty(composite);
         }
     }
+#endif
+    #endregion EDITOR
 
     public List<Node> GetChildren(Node parent)
     {
@@ -140,9 +142,6 @@ public class BehaviorTree : ScriptableObject
 
         return children;
     }
-#endif 
-    #endregion EDITOR
-
     public void Traverse(Node node, System.Action<Node> visiter)
     {
         if(node)
