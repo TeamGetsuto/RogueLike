@@ -20,7 +20,7 @@ public class Player : StateMachineBase<Player>
         //開始時1回
         public override void OnEnterState()
         {
-            Debug.Log("Idle初期化");
+            Debug.Log("Idle開始");
         }
 
         //毎フレーム呼ばれる
@@ -54,7 +54,7 @@ public class Player : StateMachineBase<Player>
         //開始時1回
         public override void OnEnterState()
         {
-            Debug.Log("歩行初期化");
+            Debug.Log("歩行開始");
         }
 
         //毎フレーム呼ばれる
@@ -62,11 +62,32 @@ public class Player : StateMachineBase<Player>
         {
             if (Input.GetKey(KeyCode.W))
             {
+                if (Input.GetKey(KeyCode.A))
+                {
+                    machine.transform.Translate(Vector3.Normalize(Vector3.up + Vector3.left) * machine.speed * Time.deltaTime);
+                    return;
+                }
+                if (Input.GetKey(KeyCode.D))
+                {
+                    machine.transform.Translate(Vector3.Normalize(Vector3.up + Vector3.right) * machine.speed * Time.deltaTime);
+                    return;
+                }
                 Debug.Log("↑");
                 machine.transform.Translate(Vector3.up * machine.speed * Time.deltaTime);
             }
             if (Input.GetKey(KeyCode.S))
             {
+                if (Input.GetKey(KeyCode.A))
+                {
+                    machine.transform.Translate(Vector3.Normalize(Vector3.down + Vector3.left) * machine.speed * Time.deltaTime);
+                    return;
+                }
+                if (Input.GetKey(KeyCode.D))
+                {
+                    machine.transform.Translate(Vector3.Normalize(Vector3.down + Vector3.right) * machine.speed * Time.deltaTime);
+                    return;
+                }
+
                 Debug.Log("↓");
                 machine.transform.Translate(Vector3.down * machine.speed * Time.deltaTime);
             }
@@ -80,7 +101,7 @@ public class Player : StateMachineBase<Player>
                 Debug.Log("→");
                 machine.transform.Translate(Vector3.right * machine.speed * Time.deltaTime);
             }
-
+            
         }
 
         public override void OnExitState()
