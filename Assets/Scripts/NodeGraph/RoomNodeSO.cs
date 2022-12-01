@@ -6,9 +6,9 @@ using System.Xml.Serialization;
 
 public class RoomNodeSO : ScriptableObject
 {
-    [HideInInspector] public string id;
-    [HideInInspector] public List<string> parentRoomIDList = new List<string>();
-    [HideInInspector] public List<string> childRoomIDList = new List<string>();
+     public string id;
+    public List<string> parentRoomIDList = new List<string>();
+    public List<string> childRoomIDList = new List<string>();
     [HideInInspector] public RoomNodeGraphSO roomNodeGraph;
     public RoomNodeTypeSO roomNodeType;
     [HideInInspector] public RoomNodeTypeListSO roomNodeTypeList;

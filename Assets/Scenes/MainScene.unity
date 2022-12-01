@@ -505,7 +505,7 @@ MonoBehaviour:
     ModeOverride: 1
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.2111802, y: 1}
+    m_SensorSize: {x: 6.0406094, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -543,7 +543,7 @@ GameObject:
   - component: {fileID: 611321326}
   - component: {fileID: 611321325}
   - component: {fileID: 611321330}
-  - component: {fileID: 611321329}
+  - component: {fileID: 611321331}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: Untagged
@@ -619,7 +619,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 8.4375
+  orthographic size: 6.15625
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -650,26 +650,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &611321329
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 611321324}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a160d838ff8b4b4693ac20007e008c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_AssetsPPU: 16
-  m_RefResolutionX: 480
-  m_RefResolutionY: 270
-  m_UpscaleRT: 0
-  m_PixelSnapping: 0
-  m_CropFrameX: 1
-  m_CropFrameY: 1
-  m_StretchFill: 1
 --- !u!114 &611321330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -704,6 +684,29 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &611321331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 611321324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c88f5cead0c0b2a4eb05b5900433f8d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ComponentVersion: 1
+  m_AssetsPPU: 16
+  m_RefResolutionX: 480
+  m_RefResolutionY: 270
+  m_CropFrame: 0
+  m_GridSnapping: 0
+  m_UpscaleRT: 0
+  m_PixelSnapping: 0
+  m_CropFrameX: 0
+  m_CropFrameY: 0
+  m_StretchFill: 0
 --- !u!1 &1112178340
 GameObject:
   m_ObjectHideFlags: 0
@@ -733,7 +736,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a03ea5a25127654e963a83186b086a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dungeonLevelList: []
+  dungeonLevelList:
+  - {fileID: 11400000, guid: 9e052d65d3aa5fe44ac50a6f9f9b251f, type: 2}
   currentDungeonLevelListIndex: 0
   gameState: 0
 --- !u!4 &1112178342

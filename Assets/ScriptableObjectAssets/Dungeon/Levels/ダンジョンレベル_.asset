@@ -13,5 +13,11 @@ MonoBehaviour:
   m_Name: "\u30C0\u30F3\u30B8\u30E7\u30F3\u30EC\u30D9\u30EB_"
   m_EditorClassIdentifier: 
   levelName: "\u30C6\u30B9\u30C8"
-  roomTemplateList: []
-  roomNodeGraphList: []
+  roomTemplateList:
+  - {fileID: 11400000, guid: 312f19fd9c2af9548b90fa0c1dfc7c53, type: 2}
+  - {fileID: 11400000, guid: c9856b9f1520bbe4e9c81e07acfac453, type: 2}
+  - {fileID: 11400000, guid: b5328ecb45488f945b5162fad43d18a9, type: 2}
+  - {fileID: 11400000, guid: cad5d193b69497847b37240120f0ec1b, type: 2}
+  - {fileID: 11400000, guid: e91c4cccca13c4446914fd15142573ad, type: 2}
+  roomNodeGraphList:
+  - {fileID: 11400000, guid: 330700cda60487f42b90113bbd83497e, type: 2}
