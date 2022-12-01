@@ -24,10 +24,21 @@ public class GameManager : SingletoneMonobehaviour<GameManager>
 
     [HideInInspector] public GameState gameState;
 
+    /// <summary>
+    /// 
+    /// </summary>
+    public GameObject player;
+    [HideInInspector] GameObject playerObject;
+    public Cinemachine.CinemachineTargetGroup group;
+    /// <summary>
+    /// 
+    /// </summary>
+
     // Start is called before the first frame update
     private void Start()
     {
         gameState = GameState.gameStarted;
+        SpawnPlayer();
     }
 
     // Update is called once per frame
@@ -51,6 +62,8 @@ public class GameManager : SingletoneMonobehaviour<GameManager>
 
                 gameState = GameState.playingLevel;
 
+                SpawnPlayer();
+
                 break;
         }
 
@@ -60,11 +73,25 @@ public class GameManager : SingletoneMonobehaviour<GameManager>
     {
         bool dungeonBuiltSuccessfully = DungeonBuilder.Instance.GenerateDungeon(dungeonLevelList[dungeonLevelListIndex]);
 
+
+
         if (!dungeonBuiltSuccessfully)
         {
             Debug.LogError("É_ÉìÉWÉáÉìê∂ê¨Ç™é∏îsÇµÇ‹ÇµÇΩ");
         }
+    }
 
+    void SpawnPlayer()
+    {
+        if(playerObject != null)
+        {
+            group.RemoveMember(playerObject.transform);
+            Destroy(playerObject);
+        }
+
+        playerObject = Instantiate(player, new Vector3(0, 0, 0), Quaternion.identity);
+
+        group.AddMember(playerObject.transform, 1, 5);
     }
 
     #region Validation
