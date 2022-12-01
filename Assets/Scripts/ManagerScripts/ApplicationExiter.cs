@@ -5,24 +5,19 @@ using UnityEngine;
 
 public class ApplicationExiter : MonoSingleton<ApplicationExiter>
 {
-    private bool isEscKeyDown = false;
-
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (this != Instance)
         {
-            isEscKeyDown = true;
-
-            if (isEscKeyDown) { return; }
-            
-            Debug.Log("Quit this game in 1 second. See you later.");
-            Invoke("QuitApplication", 1.0f);
+            Destroy(this);
+            return;
         }
-    }
 
-    private void QuitApplication()
+        DontDestroyOnLoad(this.gameObject);
+    }
+    public void QuitApplication()
     {
+        Debug.Log("Application will quit in 1 second");
         Application.Quit();
     }
 }
