@@ -8,13 +8,17 @@ public class Player : StateMachineBase<Player>
     public float speed = 4.0f;
     private bool isChecked_Input = false;
     private bool isChecked_MoveKey = false;
-    KeyCode key;
 
     private Rigidbody2D objRigidbody;
+
+    private Vector3 direction;
+
+    //hp, attackforce, defenceforce1, sword, shield
 
 
     private void Start()
     {
+        objRigidbody = GetComponent<Rigidbody2D>();
         ChangeState(new Player.Idle(this));
     }
 
@@ -25,15 +29,13 @@ public class Player : StateMachineBase<Player>
         {
         }
 
-        //開始時1回
+        //Idleに入った時に一回通る
         public override void OnEnterState()
         {
-            player.objRigidbody = player.GetComponent<Rigidbody2D>();
             Debug.Log("Idle開始");
-            
         }
 
-        //毎フレーム呼ばれる
+        //Idleの状態のとき毎フレーム呼ばれる
         public override void OnUpdate()
         {
             if (Input.GetKey(KeyCode.W))
@@ -70,16 +72,17 @@ public class Player : StateMachineBase<Player>
         {
         }
 
-        //開始時1回
+        //Walkに入ったとき1回通る
         public override void OnEnterState()
         {
             player.isChecked_Input = true;
             Debug.Log("歩行開始");
         }
 
-        //毎フレーム呼ばれる
+        //Walkの状態のとき毎フレーム呼ばれる
         public override void OnUpdate()
         {
+            player.direction = Vector3.zero;
             if (player.isChecked_Input)
             {
                 if (Input.GetKey(KeyCode.W))
@@ -95,18 +98,18 @@ public class Player : StateMachineBase<Player>
                     if (Input.GetKey(KeyCode.A))
                     {
                         Debug.Log("左上");
-                        player.MoveDirection(player, Vector3.Normalize(Vector3.up + Vector3.left));
+                        player.direction = Vector3.Normalize(Vector3.up + Vector3.left);
                         return;
                     }
                     if (Input.GetKey(KeyCode.D))
                     {
                         Debug.Log("右上");
-                        player.MoveDirection(player, Vector3.Normalize(Vector3.up + Vector3.right));
+                        player.direction = Vector3.Normalize(Vector3.up + Vector3.right);
                         return;
                     }
 
-                    //Debug.Log("上");
-                    player.MoveDirection(player, Vector3.up);
+                    Debug.Log("上");
+                    player.direction = Vector3.up;
                 }
                 else if (Input.GetKeyUp(KeyCode.W))
                 {
@@ -126,18 +129,18 @@ public class Player : StateMachineBase<Player>
                     if (Input.GetKey(KeyCode.A))
                     {
                         Debug.Log("左下");
-                        player.MoveDirection(player, Vector3.Normalize(Vector3.down + Vector3.left));
+                        player.direction = Vector3.Normalize(Vector3.down + Vector3.left);
                         return;
                     }
                     if (Input.GetKey(KeyCode.D))
                     {
                         Debug.Log("右下");
-                        player.MoveDirection(player, Vector3.Normalize(Vector3.down + Vector3.right));
+                        player.direction = Vector3.Normalize(Vector3.down + Vector3.right);
                         return;
                     }
 
                     Debug.Log("下");
-                    player.MoveDirection(player, Vector3.down);
+                    player.direction = Vector3.down;
                 }
                 else if (Input.GetKeyUp(KeyCode.S))
                 {
@@ -156,7 +159,7 @@ public class Player : StateMachineBase<Player>
                         player.ChangeState(new Player.Attack(player));
                     }
                     Debug.Log("左");
-                    player.MoveDirection(player, Vector3.left);
+                    player.direction = Vector3.left;
                 }
                 else if (Input.GetKeyUp(KeyCode.A))
                 {
@@ -174,7 +177,7 @@ public class Player : StateMachineBase<Player>
                         player.ChangeState(new Player.Attack(player));
                     }
                     Debug.Log("右");
-                    player.MoveDirection(player, Vector3.right);
+                    player.direction = Vector3.right;
                 }
                 else if (Input.GetKeyUp(KeyCode.D))
                 {
@@ -188,6 +191,10 @@ public class Player : StateMachineBase<Player>
 
         }
 
+        public override void PhysicsUpdate()
+        {
+            player.MoveDirection(player, player.direction);
+        }
     }
 
     //攻撃
@@ -197,19 +204,22 @@ public class Player : StateMachineBase<Player>
         {
         }
 
+        //Attackに入ったとき1回通る
         public override void OnEnterState()
         {
             player.isChecked_Input = true;
             Debug.Log("攻撃開始");
         }
 
+        //Attackの状態のとき毎フレーム呼ばれる
         public override void OnUpdate()
         {
             if (player.isChecked_Input)
             {
                 if (Input.GetKeyUp(KeyCode.F))
                 {
-                    if (Input.anyKey)
+                    if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || 
+                        Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
                     {
                         player.isChecked_MoveKey = true;
                     }
@@ -235,19 +245,22 @@ public class Player : StateMachineBase<Player>
         {
         }
 
+        //Defenceに入ったとき1回通る
         public override void OnEnterState()
         {
             player.isChecked_Input = true;
             Debug.Log("防御開始");
         }
 
+        //Defenceの状態のとき毎フレーム呼ばれる
         public override void OnUpdate()
         {
             if (player.isChecked_Input)
             {
                 if (Input.GetKeyUp(KeyCode.LeftShift))
                 {
-                    if (Input.anyKey)
+                    if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) ||
+                        Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
                     {
                         player.isChecked_MoveKey = true;
                     }
@@ -271,14 +284,4 @@ public class Player : StateMachineBase<Player>
     {
         player.objRigidbody.MovePosition(player.transform.position + vector * player.speed * Time.deltaTime);
     }
-
-    //public void InputKey(Player player, KeyCode key)
-    //{
-    //    switch(key)
-    //    {
-    //        case KeyCode.W:
-    //            MoveDirection(player, Vector3.up);
-    //            break;
-    //    }
-    //}
 }

@@ -34,4 +34,11 @@ public class StateMachineBase<T> : MonoBehaviour where T :StateMachineBase<T>
 		}
 	}
 
+    private void FixedUpdate()
+    {
+		if (m_currentState != null)
+        {
+			m_currentState.PhysicsUpdate();
+        }
+	}
 }
