@@ -12,8 +12,6 @@ public class ApplicationExiter : MonoSingleton<ApplicationExiter>
             Destroy(this);
             return;
         }
-
-        DontDestroyOnLoad(this.gameObject);
     }
     public void QuitApplication()
     {

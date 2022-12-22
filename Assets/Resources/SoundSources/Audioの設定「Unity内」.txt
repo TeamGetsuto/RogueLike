@@ -1,0 +1,5 @@
+Force To Mono : true
+Normalized    : true
+Quality       : 40
+
+other         : default
