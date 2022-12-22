@@ -9,7 +9,7 @@ public class ManagerController : MonoSingleton<ManagerController>
     {
         if(this != Instance)
         {
-            Destroy(this);
+            Destroy(gameObject);
             return;
         }
 

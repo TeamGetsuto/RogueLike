@@ -12,8 +12,6 @@ public class SceneChanger : MonoSingleton<SceneChanger>
             Destroy(this);
             return;
         }
-
-        DontDestroyOnLoad(this.gameObject);
     }
     public void ChangeScene(int sceneIndex)
     {
