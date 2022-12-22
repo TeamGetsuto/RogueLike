@@ -23,11 +23,11 @@ public class TestState : StateMachineBase<TestState>
         {
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
-                machine.ChangeState(new TestState.Up(machine));
+                player.ChangeState(new TestState.Up(player));
             }
             if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
-                machine.ChangeState(new TestState.Left(machine));
+                player.ChangeState(new TestState.Left(player));
             }
         }
     }
@@ -47,7 +47,7 @@ public class TestState : StateMachineBase<TestState>
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                machine.ChangeState(new TestState.Neutral(machine));
+                player.ChangeState(new TestState.Neutral(player));
             }
         }
     }
@@ -66,7 +66,7 @@ public class TestState : StateMachineBase<TestState>
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                machine.ChangeState(new TestState.Neutral(machine));
+                player.ChangeState(new TestState.Neutral(player));
             }
         }
     }
