@@ -72,6 +72,15 @@ public class InstantiatedRoom : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == Settings.playerTag && room!= GameManager.Instance.GetCurrentRoom())
+        {
+            this.room.isPreviouslyVisited = true;
+            StaticEventHandler.CallRoomChangedEvent(room);
+        }
+    }
+
     private void BlockOffUnusedDoorways()
     {
         foreach(Doorway doorway in room.doorWayList)

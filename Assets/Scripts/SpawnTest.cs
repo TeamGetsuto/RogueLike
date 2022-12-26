@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class SpawnTest : MonoBehaviour
 {
-    public RoomTemplateSO roomTemplateSO;
-
     private List<SpawnableObjectsByLevel<EnemyInfoSO>> testLevelSpawnList;
     private RandomSpawnableObject<EnemyInfoSO> randomEnemyHelperClass;
     private List<GameObject> instantiatedEnemyList = new List<GameObject> ();
@@ -29,6 +27,7 @@ public class SpawnTest : MonoBehaviour
             }
         }
         RoomTemplateSO roomTemplateSO = DungeonBuilder.Instance.GetRoomTemplate(roomChangedEventArgs.room.templateID);
+
         if(roomTemplateSO != null)
         {
             testLevelSpawnList = roomTemplateSO.enemiesByLevelList;

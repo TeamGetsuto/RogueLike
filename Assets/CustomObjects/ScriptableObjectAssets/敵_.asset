@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f2d4fc46539f52499d408f36d2915bf, type: 3}
   m_Name: "\u6575_"
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  enemyPrefab: {fileID: 8487626261360881087, guid: 6b2c336e4f000fc42b03535415a30eb2, type: 3}
   enemyTypeName: Test1
   HP: 1
   attackDamage: 2

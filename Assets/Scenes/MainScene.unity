@@ -505,7 +505,7 @@ MonoBehaviour:
     ModeOverride: 1
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.095458, y: 1}
+    m_SensorSize: {x: 1.6, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -546,7 +546,7 @@ GameObject:
   - component: {fileID: 611321331}
   m_Layer: 0
   m_Name: Main Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -619,7 +619,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 0
+  orthographic size: 9.270833
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -698,8 +698,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ComponentVersion: 1
   m_AssetsPPU: 16
-  m_RefResolutionX: 480
-  m_RefResolutionY: 270
+  m_RefResolutionX: 960
+  m_RefResolutionY: 540
   m_CropFrame: 0
   m_GridSnapping: 0
   m_UpscaleRT: 0
@@ -741,8 +741,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9e052d65d3aa5fe44ac50a6f9f9b251f, type: 2}
   currentDungeonLevelListIndex: 0
   gameState: 0
-  player: {fileID: 0}
-  group: {fileID: 0}
+  previousGameState: 0
+  player: {fileID: 411173025652142245, guid: 4d69f414ebba4744ca6ff83461365a55, type: 3}
+  group: {fileID: 67535764}
 --- !u!4 &1112178342
 Transform:
   m_ObjectHideFlags: 0
@@ -770,8 +771,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c0cd879c7cfc5e45a62f18ba0858703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomTemplateSO: {fileID: 0}
-  instantiatedEnemy: {fileID: 0}
 --- !u!1 &1839894134
 GameObject:
   m_ObjectHideFlags: 0

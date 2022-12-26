@@ -12,6 +12,11 @@ public static class Settings
 
     #endregion
 
+    #region Player Tags
+    public const string playerTag = "Player";
+    public const string playerWeapon = "playerWeapon";
+    #endregion
+
     #region Room SETTING
     public const int maxChildCorridors = 3; //Å‘åƒm[ƒh‚Ìq‹Ÿ‚Ì”
 
