@@ -70,9 +70,10 @@ public class RoomTemplateSO : ScriptableObject
     [Header("ENEMY DETAILS")]
     #endregion Header ENEMY DETAILS
 
-    public List<SpawnableObjectsByLevel<EnemyDetailsSO>> enemiesByLevelList;
+    public List<SpawnableObjectsByLevel<EnemyInfoSO>> enemiesByLevelList;
 
     public List<RoomEnemySpawnParameters> roomEnemySpawnParametersList;
+
 
     public List<Doorway> GetDoorwayList()
     {

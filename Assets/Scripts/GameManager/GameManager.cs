@@ -23,6 +23,7 @@ public class GameManager : SingletoneMonobehaviour<GameManager>
     [SerializeField] private int currentDungeonLevelListIndex = 0;
 
     [HideInInspector] public GameState gameState;
+    [HideInInspector] public GameState previousGameState;
 
     private Room currentRoom;
     private Room previousRoom;
@@ -40,6 +41,7 @@ public class GameManager : SingletoneMonobehaviour<GameManager>
     // Start is called before the first frame update
     private void Start()
     {
+        previousGameState = GameState.gameStarted;
         gameState = GameState.gameStarted;
         SpawnPlayer();
     }
@@ -97,7 +99,7 @@ public class GameManager : SingletoneMonobehaviour<GameManager>
         group.AddMember(playerObject.transform, 1, 5);
     }
 
-    public Room GetCurrenRoom()
+    public Room GetCurrentRoom()
     {
         return currentRoom;
     }
