@@ -24,6 +24,9 @@ public class GameManager : SingletoneMonobehaviour<GameManager>
 
     [HideInInspector] public GameState gameState;
 
+    private Room currentRoom;
+    private Room previousRoom;
+
     /// <summary>
     /// 
     /// </summary>
@@ -92,6 +95,16 @@ public class GameManager : SingletoneMonobehaviour<GameManager>
         playerObject = Instantiate(player, new Vector3(0, 0, 0), Quaternion.identity);
 
         group.AddMember(playerObject.transform, 1, 5);
+    }
+
+    public Room GetCurrenRoom()
+    {
+        return currentRoom;
+    }
+
+    public DungeonLevelSO GetCurrentDungeonLevel()
+    {
+        return dungeonLevelList[currentDungeonLevelListIndex];
     }
 
     #region Validation

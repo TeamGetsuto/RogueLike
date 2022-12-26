@@ -65,6 +65,15 @@ public class RoomTemplateSO : ScriptableObject
 
     public Vector2Int[] spawnPositionArray;
 
+    #region Header ENEMY DETAILS
+    [Space(10)]
+    [Header("ENEMY DETAILS")]
+    #endregion Header ENEMY DETAILS
+
+    public List<SpawnableObjectsByLevel<EnemyDetailsSO>> enemiesByLevelList;
+
+    public List<RoomEnemySpawnParameters> roomEnemySpawnParametersList;
+
     public List<Doorway> GetDoorwayList()
     {
         return doorwayList;
@@ -83,7 +92,6 @@ public class RoomTemplateSO : ScriptableObject
             previousPrefab = prefab;
             EditorUtility.SetDirty(this);
         }
-
         HelperUtilities.ValidateCheckEnumerableValues(this, nameof(doorwayList), doorwayList);
 
         HelperUtilities.ValidateCheckEnumerableValues(this, nameof(spawnPositionArray), spawnPositionArray);
