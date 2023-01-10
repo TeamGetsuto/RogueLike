@@ -46,19 +46,19 @@ public class EnemySpawner : SingletoneMonobehaviour<EnemySpawner>
 
         enemyMaxConcurrentSpawnNumber = GetConcurrentEnemies();
 
+        currentRoom.instantiatedRoom.LockDoors();
+
         SpawnEnemies();
     }
 
     private void SpawnEnemies()
     {
-        // Set gamestate engaging boss
         if (GameManager.Instance.gameState == GameState.bossStage)
         {
             GameManager.Instance.previousGameState = GameState.bossStage;
             GameManager.Instance.gameState = GameState.engagingBoss;
         }
 
-        // Set gamestate engaging enemies
         else if(GameManager.Instance.gameState == GameState.playingLevel)
         {
             GameManager.Instance.previousGameState = GameState.playingLevel;
@@ -73,7 +73,6 @@ public class EnemySpawner : SingletoneMonobehaviour<EnemySpawner>
         Grid grid = currentRoom.instantiatedRoom.grid;
 
         RandomSpawnableObject<EnemyInfoSO> randomEnemyHelperClass = new RandomSpawnableObject<EnemyInfoSO>(currentRoom.enemiesByLevelList);
-
         if (currentRoom.spawnPositionArray.Length > 0)
         {
             for (int i = 0; i < enemiesToSpawn; i++)
@@ -82,7 +81,6 @@ public class EnemySpawner : SingletoneMonobehaviour<EnemySpawner>
                 {
                     yield return null;
                 }
-
                 Vector3Int cellPosition = (Vector3Int)currentRoom.spawnPositionArray[Random.Range(0, currentRoom.spawnPositionArray.Length)];
 
                 CreateEnemy(randomEnemyHelperClass.GetItem(), grid.CellToWorld(cellPosition));
@@ -115,9 +113,38 @@ public class EnemySpawner : SingletoneMonobehaviour<EnemySpawner>
 
         GameObject enemy = Instantiate(enemyDetails.enemyPrefab, position, Quaternion.identity, transform);
 
-        ///‚Ü‚¾‚ ‚è‚Ü‚¹‚ñ
-        //enemy.GetComponent<Enemy>().EnemyInitialization(enemyDetails, enemiesSpawnedSoFar, dungeonLevel);
+        enemy.GetComponent<DestroyedEvent>().OnDestroyed += Enemy_OnDestroyed;
+    }
 
+
+    private void Enemy_OnDestroyed(DestroyedEvent destroyedEvent, DestroyedEventArgs destroyedEventArgs)
+    {
+        destroyedEvent.OnDestroyed -= Enemy_OnDestroyed;
+
+        currentEnemyCount--;
+
+
+        if (currentEnemyCount <= 0 && enemiesSpawnedSoFar == enemiesToSpawn)
+        {
+            currentRoom.isClearedOfEnemies = true;
+
+            // Set game state
+            if (GameManager.Instance.gameState == GameState.engagingEnemies)
+            {
+                GameManager.Instance.gameState = GameState.playingLevel;
+                GameManager.Instance.previousGameState = GameState.engagingEnemies;
+            }
+
+            else if (GameManager.Instance.gameState == GameState.engagingBoss)
+            {
+                GameManager.Instance.gameState = GameState.bossStage;
+                GameManager.Instance.previousGameState = GameState.engagingBoss;
+            }
+
+            currentRoom.instantiatedRoom.UnlockDoors(Settings.doorUnlockDelay);
+
+            StaticEventHandler.CallRoomEnemiesDefeatedEvent(currentRoom);
+        }
     }
 
 }

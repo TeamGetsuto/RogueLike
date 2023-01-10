@@ -34,6 +34,8 @@ public class InstantiatedRoom : MonoBehaviour
 
         BlockOffUnusedDoorways();
 
+        AddDoorsToRooms();
+
         DisableCollisionTilemapRenderer();
     }
 
@@ -175,5 +177,102 @@ public class InstantiatedRoom : MonoBehaviour
     {
         collisionTilemap.gameObject.GetComponent<TilemapRenderer>().enabled = false;
     }
+    private void AddDoorsToRooms()
+    {
+        if (room.roomNodeType.isCorridorEW || room.roomNodeType.isCorridorNS) return;
+
+        foreach (Doorway doorway in room.doorWayList)
+        {
+
+            if (doorway.doorPrefab != null && doorway.isConnected)
+            {
+                float tileDistance = Settings.tileSizePixels / Settings.pixelsPerUnit;
+
+                GameObject door = null;
+
+                if (doorway.orientation == Orientation.north)
+                {
+                    door = Instantiate(doorway.doorPrefab, gameObject.transform);
+                    door.transform.localPosition = new UnityEngine.Vector3(doorway.position.x + tileDistance / 2f, doorway.position.y + tileDistance, 0f);
+                }
+                else if (doorway.orientation == Orientation.south)
+                {
+                    door = Instantiate(doorway.doorPrefab, gameObject.transform);
+                    door.transform.localPosition = new UnityEngine.Vector3(doorway.position.x + tileDistance / 2f, doorway.position.y, 0f);
+                }
+                else if (doorway.orientation == Orientation.east)
+                {
+                    door = Instantiate(doorway.doorPrefab, gameObject.transform);
+                    door.transform.localPosition = new UnityEngine.Vector3(doorway.position.x + tileDistance, doorway.position.y + tileDistance / 2f, 0f);
+                    door.transform.Rotate(new UnityEngine.Vector3(0, 0, 90));
+                }
+                else if (doorway.orientation == Orientation.west)
+                {
+            
+                    door = Instantiate(doorway.doorPrefab, gameObject.transform);
+                    door.transform.localPosition = new UnityEngine.Vector3(doorway.position.x, doorway.position.y + tileDistance / 2f, 0f);
+                    door.transform.Rotate(new UnityEngine.Vector3(0, 0, 90));
+                }
+
+            
+                Door doorComponent = door.GetComponent<Door>();
+
+                if (room.roomNodeType.isBossRoom)
+                {
+                    doorComponent.isBossRoomDoor = true;
+                    doorComponent.LockDoor();
+
+                }
+            }
+
+        }
+
+    }
+
+    public void DisableRoomCollider()
+    {
+        boxCollider2D.enabled = false;
+    }
+
+
+    public void EnableRoomCollider()
+    {
+        boxCollider2D.enabled = true;
+    }
+
+    public void LockDoors()
+    {
+        Door[] doorArray = GetComponentsInChildren<Door>();
+
+        // Trigger lock doors
+        foreach (Door door in doorArray)
+        {
+            door.LockDoor();
+        }
+
+        // Disable room trigger collider
+        DisableRoomCollider();
+    }
+
+    public void UnlockDoors(float doorUnlockDelay)
+    {
+        StartCoroutine(UnlockDoorsRoutine(doorUnlockDelay));
+    }
+
+    private IEnumerator UnlockDoorsRoutine(float doorUnlockDelay)
+    {
+        if (doorUnlockDelay > 0f)
+            yield return new WaitForSeconds(doorUnlockDelay);
+
+        Door[] doorArray = GetComponentsInChildren<Door>();
+
+        foreach (Door door in doorArray)
+        {
+            door.UnlockDoor();
+        }
+        EnableRoomCollider();
+    }
 
 }
+
+
