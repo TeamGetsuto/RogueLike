@@ -232,6 +232,8 @@ public class DungeonBuilder : SingletoneMonobehaviour<DungeonBuilder>
         room.lowerBounds = roomTemplate.lowerBounds;
         room.upperBounds = roomTemplate.upperBounds;
         room.spawnPositionArray = roomTemplate.spawnPositionArray;
+        room.enemiesByLevelList = roomTemplate.enemiesByLevelList;
+        room.roomLevelEnemySpawnParametersList = roomTemplate.roomEnemySpawnParametersList;
         room.templateLowerBounds = roomTemplate.lowerBounds;
         room.templateUpperBounds = roomTemplate.upperBounds;
         room.childRoomIDList = CopyStringList(roomNode.childRoomIDList);
@@ -246,6 +248,12 @@ public class DungeonBuilder : SingletoneMonobehaviour<DungeonBuilder>
         {
             room.parentRoomID = roomNode.parentRoomIDList[0];
         }
+
+        if(room.GetNumberOfEnemiesToSpawn(GameManager.Instance.GetCurrentDungeonLevel()) == 0)
+        {
+            room.isClearedOfEnemies = true;
+        }
+
         return room;
     }
 

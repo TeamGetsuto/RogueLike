@@ -23,6 +23,10 @@ public class GameManager : SingletoneMonobehaviour<GameManager>
     [SerializeField] private int currentDungeonLevelListIndex = 0;
 
     [HideInInspector] public GameState gameState;
+    [HideInInspector] public GameState previousGameState;
+
+    private Room currentRoom;
+    private Room previousRoom;
 
     /// <summary>
     /// 
@@ -37,6 +41,7 @@ public class GameManager : SingletoneMonobehaviour<GameManager>
     // Start is called before the first frame update
     private void Start()
     {
+        previousGameState = GameState.gameStarted;
         gameState = GameState.gameStarted;
         SpawnPlayer();
     }
@@ -92,6 +97,41 @@ public class GameManager : SingletoneMonobehaviour<GameManager>
         playerObject = Instantiate(player, new Vector3(0, 0, 0), Quaternion.identity);
 
         group.AddMember(playerObject.transform, 1, 5);
+    }
+
+    private void OnEnable()
+    {
+        StaticEventHandler.OnRoomChanged += StaticEventHandler_OnRoomChanged;
+    }
+
+    private void OnDisable()
+    {
+        // Unsubscribe from room changed event
+        StaticEventHandler.OnRoomChanged -= StaticEventHandler_OnRoomChanged;
+    }
+
+    /// <summary>
+    /// Handle room changed event
+    /// </summary>
+    private void StaticEventHandler_OnRoomChanged(RoomChangedEventArgs roomChangedEventArgs)
+    {
+        SetCurrentRoom(roomChangedEventArgs.room);
+    }
+
+    public void SetCurrentRoom(Room room)
+    {
+        previousRoom = currentRoom;
+        currentRoom = room;
+    }
+
+    public Room GetCurrentRoom()
+    {
+        return currentRoom;
+    }
+
+    public DungeonLevelSO GetCurrentDungeonLevel()
+    {
+        return dungeonLevelList[currentDungeonLevelListIndex];
     }
 
     #region Validation

@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "“G_", menuName = "ScriptableObjects/Entity/“G")]
 public class EnemyInfoSO : ScriptableObject
 {
-    public GameObject prefab;
+    public GameObject enemyPrefab;
 
     public string           enemyTypeName;
     public int              HP;
