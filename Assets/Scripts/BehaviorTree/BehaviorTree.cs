@@ -116,6 +116,9 @@ public class BehaviorTree : ScriptableObject
         }
     }
 
+#endif
+    #endregion EDITOR
+
     public List<Node> GetChildren(Node parent)
     {
         List<Node> children = new List<Node>();
@@ -140,8 +143,7 @@ public class BehaviorTree : ScriptableObject
 
         return children;
     }
-#endif 
-    #endregion EDITOR
+
 
     public void Traverse(Node node, System.Action<Node> visiter)
     {
