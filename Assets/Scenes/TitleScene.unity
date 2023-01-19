@@ -647,7 +647,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1557233632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -944,7 +944,15 @@ MonoBehaviour:
   settings:
     defVol: 0
     mute: 0
-  soundDatas: []
+  soundDatas:
+  - name: "\u30BF\u30A4\u30C8\u30EB"
+    clip: {fileID: 8300000, guid: 0e3a9f447b4274e4ab5b2a4a4b0a29a0, type: 3}
+    vol: 1
+    loop: 1
+  - name: "\u30B2\u30FC\u30E0BGM"
+    clip: {fileID: 8300000, guid: 2ebb8f5262c17f44c8ea44adeab2e632, type: 3}
+    vol: 0.75
+    loop: 1
 --- !u!1 &2029639684
 GameObject:
   m_ObjectHideFlags: 0

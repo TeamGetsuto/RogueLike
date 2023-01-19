@@ -25,6 +25,9 @@ public class ParticleController : MonoSingleton<ParticleController>
 
         //effector‚ğ–³Œø‰»
         effector.SetActive(false);
+
+        //effect‚ğÄ¶
+        PlayEffect();
     }
 
     private void Update()
